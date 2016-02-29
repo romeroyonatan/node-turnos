@@ -1,0 +1,10 @@
+table
+    thead
+        tr
+            th Name
+            th Phone
+    tbody
+        tr(ng-repeat="patient in patients")
+            td
+              a(href="#/patients/{{patient.id}}") {{ patient.name }}
+            td {{ patient.phone }}

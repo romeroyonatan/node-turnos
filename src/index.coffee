@@ -1,6 +1,7 @@
 express = require 'express'
 stylus = require 'stylus'
 assets = require 'connect-assets'
+jadeAssets = require 'connect-assets-jade'
 mongoose = require 'mongoose'
 session = require('express-session')
 cookieParser = require('cookie-parser')
@@ -30,6 +31,7 @@ else
 app.use assets()
 # Set the public folder as static assets.
 app.use express.static(process.cwd() + '/public')
+
 
 # Express Session
 console.log "setting session/cookie"

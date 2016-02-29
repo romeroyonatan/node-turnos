@@ -15,6 +15,10 @@ module.exports = (app) ->
       next()
 
 
+  # Serve partials jade
+  app.get '/partials/:view/:name', (req, res) ->
+    res.render "partials/#{req.params.view}/#{req.params.name}"
+
   app.all '/private', checkAuth, (req, res, next) ->
     routeMvc('private', 'index', req, res, next)
 
@@ -39,6 +43,7 @@ module.exports = (app) ->
     console.warn "error 404: ", req.url
     res.statusCode = 404
     res.render '404', 404
+
 
 # render the page based on controller name, method and id
 routeMvc = (controllerName, methodName, req, res, next) ->
