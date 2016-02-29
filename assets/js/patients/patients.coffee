@@ -6,6 +6,14 @@ angular.module('myApp.patients', ['ngRoute'])
     templateUrl: '/partials/patient/all'
     controller: 'PatientListCtrl'
   
+  $routeProvider.when '/patients/create',
+    templateUrl: '/partials/patient/create'
+    controller: 'PatientCreateCtrl'
+
+  $routeProvider.when '/patients/delete/:id',
+    templateUrl: 'partials/patient/delete'
+    controller: 'PatientDeleteCtrl'
+
   $routeProvider.when '/patients/:id',
     templateUrl: 'partials/patient/detail'
     controller: 'PatientDetailCtrl'
@@ -15,9 +23,23 @@ angular.module('myApp.patients', ['ngRoute'])
   $scope.patients = patients
 ]
 
-.controller 'PatientDetailCtrl', ["$scope", "$routeParams", "$location"
+.controller 'PatientDetailCtrl', ["$scope", "$routeParams", "$location",
   ($scope, $routeParams, $location) ->
       $scope.patient = p for p in patients when p.id == $routeParams.id
+]
+
+.controller 'PatientCreateCtrl', ["$scope", "$location", ($scope, $location) ->
+  $scope.create = (patient) ->
+    patient.id = "#{patients.length + 1}"
+    patients.push patient
+    $location.path "/"
+]
+
+.controller 'PatientDeleteCtrl', ["$scope", "$location",
+  ($scope, $location) ->
+    $scope.delete = (patient) ->
+      patients = p in patients when p.id isnt patient.id
+      $location.path "/"
 ]
 
 # ############################################################################
