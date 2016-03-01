@@ -1,14 +1,21 @@
 h1 Create patient
-form(novalidate)
-  div(class="form-group")
-    label(for="id_name") Name
-    input(id="id_name" class="form-control" ng-model="patient.name"
-          placeholder="John Smith")
-  div(class="form-group")
-    label(for="id_phone") Phone
-    input(id="id_phone" class="form-control" ng-model="patient.phone"
-          placeholder="4123-4123")
-  div(class="pull-right")
-    div(class="btn-group" role="group" aria-label="...")
-      button(class="btn btn-success" ng-click="create(patient)") Create
-      button(class="btn btn-danger" ng-click="cancel()") Cancel
+
+form(novalidate name="form")
+  .form-group(ng-class="{'has-error':form.$submitted && form.name.$error}")
+     label(for="id_name") Name
+     input#id_name.form-control(
+       ng-model="patient.name" name="name" placeholder="John Smith" required
+     )
+  
+  .form-group(ng-class="{'has-error':form.$submitted && form.phone.$error}")
+     label(for="id_phone") Phone
+     input#id_phone.form-control(
+       ng-model="patient.phone" name="phone" placeholder="4123-4123" required
+     )
+
+  .row
+    .pull-right
+      .btn-group(role="group" aria-label="...")
+        button.btn.btn-success(ng-click="create(patient)" 
+                               ng-disabled="!form.$valid") Create
+        button.btn.btn-danger(ng-click="cancel()") Cancel

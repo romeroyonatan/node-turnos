@@ -2,14 +2,14 @@ h1 Patients
 
 a(href="#/patients/create" class="btn btn-primary") Create
 
-table(class="table table-striped")
-    thead
-        tr
-            th Name
-            th Phone
-    tbody
-        tr(ng-repeat="patient in patients")
-            td
-              a(href="#/patients/{{patient.id}}") {{ patient.name }}
-            td {{ patient.phone }}
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th Phone
+  tbody
+    tr(ng-repeat="patient in patients")
+      td
+        a(href="#/patients/{{patient.id}}") {{ patient.name }}
+      td {{ patient.phone }}
 
