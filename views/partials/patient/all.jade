@@ -1,6 +1,6 @@
 h1 Patients
 
-input.col-md-11(ng-model="search" placeholder="Type to search")
+input.col-xs-12(ng-model="search" placeholder="Type to search")
 
 table.table.table-striped
   thead
@@ -15,3 +15,8 @@ table.table.table-striped
         a(href="#/patients/{{patient.id}}") {{ patient.name }}
       td {{ patient.phone }}
       td
+        .btn-group
+          a.btn.btn-default(href="#")
+            i.fa.fa-pencil  Edit
+          a.btn.btn-danger(href="#")
+            i.fa.fa-remove  Delete
