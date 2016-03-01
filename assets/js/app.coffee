@@ -1,4 +1,6 @@
-# Declare app level module which depends on views, and components
+#= require directives
+#= require filters
+#= require patients/patients
 angular.module 'myApp', [
   'ngRoute',
   'myApp.patients',

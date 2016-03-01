@@ -28,7 +28,9 @@ else
 
 #### View initialization
 # Add Connect Assets.
-app.use assets()
+app.use assets(
+    compress: true
+)
 # Set the public folder as static assets.
 app.use express.static(process.cwd() + '/public')
 

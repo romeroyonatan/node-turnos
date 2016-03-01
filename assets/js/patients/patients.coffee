@@ -25,7 +25,7 @@ angular.module('myApp.patients', ['ngRoute'])
 
 .controller 'PatientDetailCtrl', ["$scope", "$routeParams", "$location",
   ($scope, $routeParams, $location) ->
-      $scope.patient = p for p in patients when p.id == $routeParams.id
+      $scope.patient = p for p in patients when p.id is $routeParams.id
 ]
 
 .controller 'PatientCreateCtrl', ["$scope", "$location", ($scope, $location) ->
@@ -33,12 +33,14 @@ angular.module('myApp.patients', ['ngRoute'])
     patient.id = "#{patients.length + 1}"
     patients.push patient
     $location.path "/"
+  $scope.cancel = () ->
+    $location.path "/"
 ]
 
 .controller 'PatientDeleteCtrl', ["$scope", "$location",
   ($scope, $location) ->
     $scope.delete = (patient) ->
-      patients = p in patients when p.id isnt patient.id
+      patients = p for p in patients when p.id isnt patient.id
       $location.path "/"
 ]
 

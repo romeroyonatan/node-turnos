@@ -1,4 +1,14 @@
+h1 Create patient
 form(novalidate)
-    input(ng-model="patient.name")
-    input(ng-model="patient.phone")
-    input(type="submit" ng-click="create(patient)")
+  div(class="form-group")
+    label(for="id_name") Name
+    input(id="id_name" class="form-control" ng-model="patient.name"
+          placeholder="John Smith")
+  div(class="form-group")
+    label(for="id_phone") Phone
+    input(id="id_phone" class="form-control" ng-model="patient.phone"
+          placeholder="4123-4123")
+  div(class="pull-right")
+    div(class="btn-group" role="group" aria-label="...")
+      button(class="btn btn-success" ng-click="create(patient)") Create
+      button(class="btn btn-danger" ng-click="cancel()") Cancel

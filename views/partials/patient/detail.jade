@@ -1,5 +1,11 @@
-h1 {{patient.id}} - {{ patient.name }}
+h1 {{ patient.name }}
 
-p {{ patient.phone }}
+dl
+  dt ID
+  dd {{ patient.id }}
+  dt Name
+  dd {{ patient.name }}
+  dt Phone
+  dd {{ patient.phone }}
 
 a(href="#/patients") Back
