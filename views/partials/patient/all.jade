@@ -1,15 +1,17 @@
 h1 Patients
 
-a(href="#/patients/create" class="btn btn-primary") Create
+input.col-md-11(ng-model="search" placeholder="Type to search")
 
 table.table.table-striped
   thead
     tr
       th Name
       th Phone
+      th: a.btn.btn-default(href="#/patients/create")
+        i.fa.fa-plus  New pacient
   tbody
-    tr(ng-repeat="patient in patients")
+    tr(ng-repeat="patient in patients|filter:search")
       td
         a(href="#/patients/{{patient.id}}") {{ patient.name }}
       td {{ patient.phone }}
-
+      td
